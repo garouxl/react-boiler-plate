@@ -1,0 +1,98 @@
+<!-- Basic JavaScript-rendered Hello World -->
+<!-- http://localhost:3000/isolated/exercise/01.html -->
+
+<!-- 🐨 Create (in HTML) a <body> with a <div> with the id of "root" -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>exercicio 1</title>
+    <style type="text/css">
+      * {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+  <script type="text/babel">
+    function Message({ greeting, subject, children }) {
+      return (
+        <div className='message'>
+          {greeting} {children}
+        </div>
+      )
+    }
+
+    /*
+    const PropTypes = {
+      string(props, propName, componentName) {
+        if (typeof props[propName] !== 'string') {
+          return new Error(`The ${propName} is not a string or is missing`)
+        }
+      },
+    }
+*/
+
+    Message.propTypes = {
+      greeting: PropTypes.string.isRequired,
+    }
+
+    const defaultValuesByTopic = {
+      training: 'I would like some training',
+      consulting: 'I have consulting needs',
+      question: 'I have some questions',
+    }
+
+    const Contact = () => {
+      const [topic, setTopic] = React.useState('training')
+
+      return (
+        <form>
+          <label htmlFor='html'>topic</label>
+          <select
+            id='topic'
+            key={topic}
+            onChange={(e) => {
+              setTopic(e.target.value)
+            }}
+          >
+            <option value='training'>training</option>
+            <option value='consulting'>consulting</option>
+            <option value='question'>question</option>
+          </select>
+          <label htmlFor='subject'>Email subject</label>
+          <input
+            type='text'
+            value={defaultValuesByTopic[topic]}
+            id='subject'
+            onChange={() => {}}
+          />
+          <label htmlFor='body'>Email Body</label>
+          <textarea id='body' cols='30' rows='10'></textarea>
+        </form>
+      )
+    }
+
+    const element = (
+      <>
+        <Message greeting='Hello' />
+        <Message>Hello Another World</Message>
+        <Message greeting='Goodbye World'>
+          <Message greeting='Hello Again' />
+        </Message>
+        <hr />
+        <Contact />
+      </>
+    )
+
+    ReactDOM.createRoot(document.getElementById('root')).render(element)
+  </script>
+</html>
