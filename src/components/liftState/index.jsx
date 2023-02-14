@@ -5,7 +5,7 @@ import styles from './LiftState.module.scss'
 export default function Accordion() {
   const [activeIndex, setActiveIndex] = useState(0);
   return (
-    <React.Fragment>
+    <div style={{backgroundColor: 'gray'}}>
       <h2 className={styles.title}>Lift State</h2>
       <Panel
         title="About"
@@ -21,7 +21,7 @@ export default function Accordion() {
       >
         The name comes from <span lang="kk-KZ">алма</span>, the Kazakh word for "apple" and is often translated as "full of apples". In fact, the region surrounding Almaty is thought to be the ancestral home of the apple, and the wild <i lang="la">Malus sieversii</i> is considered a likely candidate for the ancestor of the modern domestic apple.
       </Panel>
-    </React.Fragment>
+    </div>
   );
 }
 
