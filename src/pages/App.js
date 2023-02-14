@@ -1,3 +1,4 @@
+import ColocateState from "../components/colocateState";
 import Header from "../components/header";
 import LiftState from "../components/liftState";
 
@@ -6,6 +7,8 @@ function App() {
     <div className="App">
       <Header />
       <LiftState />
+      <hr />
+      <ColocateState />
     </div>
   );
 }
