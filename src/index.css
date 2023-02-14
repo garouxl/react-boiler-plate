@@ -50,14 +50,14 @@ input {
 	color: inherit;
 }
 
-button {
+/* button {
 	border: unset;
 	background-color: unset;
 	font-family: inherit;
 	font-size: inherit;
 	font-weight: inherit;
 	color: inherit; 
-}
+} */
 
 @import url('https://fonts.googleapis.com/css2?family=Manjari&display=swap');
 
@@ -108,4 +108,20 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
 	background: #555;
+}
+
+h1 {
+	font-size: 2rem;
+}
+
+h2 {
+	font-size: 1.8rem;
+}
+
+h3 {
+	font-size: 1.6rem;
+}
+
+hr {
+	margin: 2rem 0
 }
