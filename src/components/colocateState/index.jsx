@@ -13,7 +13,10 @@ function ColocateState() {
           <Dashboard>
             <DashboardNav />
             <DashboardContent>
-              <WelcomeMessage user={currentUser} />
+              <WelcomeMessage
+                user={currentUser}
+                onLogout={() => setCurrentUser('')}
+              />
             </DashboardContent>
           </Dashboard>
         ) : (
@@ -74,6 +77,7 @@ function WelcomeMessage({ user, onLogout }) {
   return (
     <div>
       <p>Welcome {user.name}!!!</p>
+      <button onClick={onLogout}>Log out</button>
     </div>
   )
 }
