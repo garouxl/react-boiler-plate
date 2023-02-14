@@ -4,13 +4,18 @@ function ColocateState() {
   const [currentUser, setCurrentUser] = useState()
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-    <h1>Colocation State</h1>
+      <h1>Colocation State</h1>
       <div style={{ backgroundColor: 'lightgray' }}>
         <Header />
       </div>
       <div style={{ flex: 1 }}>
         {currentUser ? (
-          <Dashboard user={currentUser} />
+          <Dashboard>
+            <DashboardNav />
+            <DashboardContent>
+              <WelcomeMessage user={currentUser} />
+            </DashboardContent>
+          </Dashboard>
         ) : (
           <LoginScreen onLogin={() => { setCurrentUser({ name: 'Leandro' }) }} />
         )}
@@ -33,18 +38,17 @@ function Header() {
 function LoginScreen({ onLogin }) {
   return (
     <div>
-    <h3>please login</h3>
-    <button onClick={onLogin}>Login</button>
+      <h3>please login</h3>
+      <button onClick={onLogin}>Login</button>
     </div>
   )
 }
 
-function Dashboard({ user }) {
+function Dashboard({ children }) {
   return (
     <div>
       <h2>The Dashboard</h2>
-      <DashboardNav />  
-      <DashboardContent user={user} />
+      {children}
     </div>
   )
 }
@@ -57,16 +61,16 @@ function DashboardNav() {
   )
 }
 
-function DashboardContent({ user }) {
+function DashboardContent({ children }) {
   return (
     <div>
       <h3>dashboard content</h3>
-      <WelcomeMessage user={user} />
+      {children}
     </div>
   )
 }
 
-function WelcomeMessage({ user }) {
+function WelcomeMessage({ user, onLogout }) {
   return (
     <div>
       <p>Welcome {user.name}!!!</p>
@@ -81,6 +85,5 @@ function Footer() {
     </div>
   )
 }
-
 
 export default ColocateState
